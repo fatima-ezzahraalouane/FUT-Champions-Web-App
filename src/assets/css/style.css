@@ -6,3 +6,11 @@ body {
     height: 100%; */
 }
 
+header {
+    background: rgb(204, 204, 204);
+}
+
+.logoFUT {
+    height: 40px;
+    width: 45px;
+}
