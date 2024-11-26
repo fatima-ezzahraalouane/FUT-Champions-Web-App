@@ -1,5 +1,23 @@
 body {
     font-family: 'Inter', sans-serif;
-    background-image: url('../images/back.jpg');
+    background-image: url('../images/stadium.jpg');
     background-size: cover;
+    /* background-repeat: no-repeat;
+    height: 100%; */
+}
+
+header {
+    background: rgb(204, 204, 204);
+    /* background: black; */
+
+}
+
+/* #logoFut {
+    height: 10px;
+    width: 10px;
+} */
+
+img {
+    height: 40px;
+    width: 45px;
 }
