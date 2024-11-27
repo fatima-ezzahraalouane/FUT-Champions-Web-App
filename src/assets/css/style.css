@@ -46,6 +46,7 @@ main {
     grid-template-rows: repeat(6, 1fr);
 }
 
+/* Card */
 .player-card {
     position: relative;
     display: flex;
