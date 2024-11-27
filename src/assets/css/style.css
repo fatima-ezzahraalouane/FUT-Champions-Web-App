@@ -58,6 +58,19 @@ main {
     background: transparent;
 }
 
+
+.player-card span {
+    position: absolute;
+    top: 98px;
+    left: 19px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1px 5px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
 .card-bg {
     position: absolute;
     top: 0;
