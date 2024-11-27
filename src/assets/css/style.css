@@ -8,9 +8,29 @@ body {
 
 header {
     background: rgb(228, 227, 227);
+    /* padding: 10px 20px; */
+
 }
 
-.logoFUT {
+header img {
     height: 40px;
     width: 45px;
+}
+
+main {
+    position: relative;
+    height: 100vh;
+
+}
+
+/* .stadium-container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    aspect-ratio: 16/9;
+} */
+
+.stadium-image {
+    width: 70%;
+    height: auto;
 }
