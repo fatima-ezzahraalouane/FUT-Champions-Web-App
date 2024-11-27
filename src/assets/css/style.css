@@ -1,15 +1,13 @@
 body {
     font-family: 'Inter', sans-serif;
-    background-image: url('../images/stadium.jpg');
-    background-size: cover;
-    /* background-repeat: no-repeat;
-    height: 100%; */
+    /* margin: 0;
+    padding: 0; */
+    background: url(../images/stadium.jpg);
 }
 
 header {
-    background: rgb(228, 227, 227);
-    /* padding: 10px 20px; */
-
+    background: rgb(204, 204, 204);
+    padding: 10px 20px;
 }
 
 header img {
@@ -19,8 +17,10 @@ header img {
 
 main {
     position: relative;
-    height: 100vh;
-
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .stadium-container {
@@ -31,6 +31,124 @@ main {
 } */
 
 .stadium-image {
-    width: 70%;
+    width: 60%;
     height: auto;
+}
+
+.field-overlay {
+    position: absolute;
+    top: 20px;
+    left: 21%;
+    width: 20%;
+    height: 20%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.player-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 120px;
+    background: transparent;
+}
+
+.card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.card-bg:hover {
+    box-shadow: 0 10px 10px rgb(104, 204, 104);
+}
+
+.add-player-btn {
+    position: absolute;
+    top: 45px;
+    left: 33px;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.player-card:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.goalkeeper {
+    grid-column: 3;
+    grid-row: 5;
+}
+
+.defender.left {
+    grid-column: 1;
+    grid-row: 3;
+    left: 40px;
+}
+
+.defender.center-left {
+    grid-column: 2;
+    grid-row: 3;
+    left: 40px;
+
+}
+
+.defender.center-right {
+    grid-column: 3;
+    grid-row: 3;
+    left: 40px;
+
+}
+
+.defender.right {
+    grid-column: 4;
+    grid-row: 3;
+    left: 40px;
+
+}
+
+.midfielder.left {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.midfielder.center {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.midfielder.right {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.forward.left {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.forward.center {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.forward.right {
+    grid-column: 4;
+    grid-row: 1;
 }

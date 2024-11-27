@@ -16,19 +16,33 @@
     <header class="d-flex justify-content-between align-items-center p-2">
         <img src="./src/assets/images/lg-removebg-preview.png" alt="logoFUT">
         <div class="d-flex align-items-center">
-            <button id="ajouterjoueur" class="btn btn-light rounded-pill me-2 fw-semibold" aria-label="Ajouter Joueur">Ajouter Joueur</button>
+            <button id="ajouterjoueur" class="btn btn-light rounded-pill me-2 fw-semibold"
+                aria-label="Ajouter Joueur">Ajouter Joueur</button>
         </div>
     </header>
 
     <!-- Main -->
-     <main class="d-flex justify-content-center align-items-center">
+    <main class="d-flex justify-content-center align-items-center">
         <!-- Stad -->
-         <div class="stadium-container">
+        <div class="stadium-container">
             <img src="./src/assets/images/stade.png" alt="stade" class="stadium-image">
-            
-         </div>
+            <div class="field-overlay">
+                <!-- Positions for players in the 4-3-3 formation -->
+                <div class="player-card goalkeeper" data-position="GK">
+                    <img src="./src/assets/images/carte.png" alt="Card Background" class="card-bg">
+                    <button class="add-player-btn">+</button>
+                </div>
+                
 
-     </main>
+
+
+
+
+
+            </div>
+        </div>
+
+    </main>
 
     <!-- commantaire -->
     <script src="./src/assets/js/script.js"></script>
