@@ -19,5 +19,3 @@ prevBtn.addEventListener('click', () => {
     }
 });
 
-
-

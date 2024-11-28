@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <!-- id="ajouterjoueur"  -->
     <!-- Header -->
     <header class="d-flex justify-content-between align-items-center p-2">
         <img src="./src/assets/images/lg-removebg-preview.png" alt="logoFUT">
@@ -149,8 +148,64 @@
         </div>
     </main>
 
+<!-- site b l3arabiya -->
+
     <section>
-        <!-- Formulaire -->
+        <!-- Modal -->
+        <div id="modal" class="modal justify-content-center align-items-center">
+            <div class="modal-content p-4 text-black">
+                <h2 class="fs-3 mb-3 text-black">Nouvel joueur</h2>
+
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" placeholder="Nom" class="form-control mb-1">
+
+                <label for="nationality">Nationality</label>
+                <input type="text" id="nationality" placeholder="Nationality" class="form-control mb-1">
+
+                <label for="club">Club</label>
+                <input type="text" id="club" placeholder="Club" class="form-control mb-1">
+
+                <label for="positionJoueur">Position</label>
+                <select id="positionJoueur" class="form-select mb-1">
+                    <option value="GK">GK</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RB">RB</option>
+                    <option value="CM">CM</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="RW">RW</option>
+                </select>
+
+                <label for="rating">Rating</label>
+                <input type="number" id="rating" placeholder="Rating" class="form-control mb-1">
+
+                <label for="pace">Pace</label>
+                <input type="number" id="pace" placeholder="Pace" class="form-control mb-1">
+
+                <label for="shooting">Shooting</label>
+                <input type="number" id="shooting" placeholder="Shooting" class="form-control mb-1">
+
+                <label for="passing">Passing</label>
+                <input type="number" id="passing" placeholder="Passing" class="form-control mb-1">
+
+                <label for="dribbling">Dribbling</label>
+                <input type="number" id="dribbling" placeholder="Dribbling" class="form-control mb-1">
+
+                <label for="defending">Defending</label>
+                <input type="number" id="defending" placeholder="Defending" class="form-control mb-1">
+
+                <label for="physical">Physical</label>
+                <input type="number" id="physical" placeholder="Physical" class="form-control mb-1">
+
+                <div class="modal-footer p-0">
+                    <button id="cancelButton" type="button" class="btn btn-secondary rounded-pill"
+                        aria-label="Annuler joueur">Annuler</button>
+                    <button id="addButton" type="submit" class="btn btn-dark rounded-pill"
+                        aria-label="Ajouter joueur">Ajouter</button>
+                </div>
+            </div>
+        </div>
     </section>
 
     <script src="./src/assets/js/script.js"></script>
