@@ -19,3 +19,29 @@ prevBtn.addEventListener('click', () => {
     }
 });
 
+
+
+
+// Sélectionne tous les boutons "+" et le modal
+const addPlayerButtons = document.querySelectorAll('.add-player-btn');
+const modal = document.getElementById('modal');
+const cancelButton = document.getElementById('cancelButton');
+
+// Fonction pour afficher le modal
+addPlayerButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        modal.style.display = 'flex'; // Affiche le modal
+    });
+});
+
+// Fonction pour fermer le modal
+cancelButton.addEventListener('click', () => {
+    modal.style.display = 'none'; // Cache le modal
+});
+
+// Fermer le modal en cliquant en dehors de la boîte
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
