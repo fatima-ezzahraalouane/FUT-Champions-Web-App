@@ -48,3 +48,34 @@ window.addEventListener('click', (event) => {
 
 
 
+// Références des champs et du menu déroulant
+const positionSelect = document.getElementById('positionJoueur');
+const paceLabel = document.querySelector('label[for="pace"]');
+const shootingLabel = document.querySelector('label[for="shooting"]');
+const passingLabel = document.querySelector('label[for="passing"]');
+const dribblingLabel = document.querySelector('label[for="dribbling"]');
+const defendingLabel = document.querySelector('label[for="defending"]');
+const physicalLabel = document.querySelector('label[for="physical"]');
+
+// Écouteur pour détecter les changements dans le menu déroulant
+positionSelect.addEventListener('change', () => {
+    const position = positionSelect.value;
+
+    if (position === 'GK') {
+        // Modifier les labels pour le gardien
+        paceLabel.textContent = 'Diving';
+        shootingLabel.textContent = 'Handling';
+        passingLabel.textContent = 'Kicking';
+        dribblingLabel.textContent = 'Reflexes';
+        defendingLabel.textContent = 'Speed';
+        physicalLabel.textContent = 'Positioning';
+    } else {
+        // Réinitialiser les labels pour les autres positions
+        paceLabel.textContent = 'Pace';
+        shootingLabel.textContent = 'Shooting';
+        passingLabel.textContent = 'Passing';
+        dribblingLabel.textContent = 'Dribbling';
+        defendingLabel.textContent = 'Defending';
+        physicalLabel.textContent = 'Physical';
+    }
+});

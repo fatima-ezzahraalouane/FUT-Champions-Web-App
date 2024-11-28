@@ -148,59 +148,95 @@
         </div>
     </main>
 
-    <!-- site b l3arabiya -->
-
     <section>
         <!-- Modal -->
         <div id="modal" class="modal justify-content-center align-items-center">
-            <div class="modal-content p-4 text-black">
-                <h2 class="fs-3 mb-3 text-black">Nouvel joueur</h2>
+            <div class="modal-content p-3 text-black">
+                <h2 class="fs-3 mb-1 text-black">Nouvel joueur</h2>
 
-                <label for="nom">Nom</label>
-                <input type="text" id="nom" placeholder="Nom" class="form-control mb-1">
-
-                <label for="nationality">Nationality</label>
-                <input type="text" id="nationality" placeholder="Nationality" class="form-control mb-1">
-
-                <label for="club">Club</label>
-                <input type="text" id="club" placeholder="Club" class="form-control mb-1">
-
-                <label for="positionJoueur">Position</label>
-                <select id="positionJoueur" class="form-select mb-1">
-                    <option value="GK">GK</option>
-                    <option value="LB">LB</option>
-                    <option value="CB">CB</option>
-                    <option value="RB">RB</option>
-                    <option value="CM">CM</option>
-                    <option value="LW">LW</option>
-                    <option value="ST">ST</option>
-                    <option value="RW">RW</option>
-                </select>
                 <div class="stats-container">
                     <div class="stats-row">
-                        <!-- <label for="rating">Rating</label> -->
-                        <input type="number" id="rating" placeholder="NOT" class="form-control mb-1">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" placeholder="Nom" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="nationality">Nationality</label>
+                            <input type="text" id="nationality" placeholder="Nationality" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="club">Club</label>
+                            <input type="text" id="club" placeholder="Club" class="form-control">
+                        </div>
+                    </div>
 
-                        <!-- <label for="pace">Pace</label> -->
-                        <input type="number" id="pace" placeholder="PAC" class="form-control mb-1">
+                    <div class="stats-row">
+                        <div class="form-group">
+                            <label for="photo">Photo</label>
+                            <input type="url" id="photo" placeholder="Entrer URL de photo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="flag">Flag</label>
+                            <input type="url" id="flag" placeholder="Entrer URL de flag" class="form-control">
+                        </div>
+                    </div>
 
-                        <!-- <label for="shooting">Shooting</label> -->
-                        <input type="number" id="shooting" placeholder="SHO" class="form-control mb-1">
+                    <div class="stats-row">
+                        <div class="form-group">
+                            <label for="logoJoueur">Logo</label>
+                            <input type="url" id="logoJoueur" placeholder="Entrer URL de logo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="positionJoueur">Position</label>
+                            <select id="positionJoueur" class="form-select">
+                                <option value="GK">GK</option>
+                                <option value="LB">LB</option>
+                                <option value="CB">CB</option>
+                                <option value="RB">RB</option>
+                                <option value="CM">CM</option>
+                                <option value="LW">LW</option>
+                                <option value="ST">ST</option>
+                                <option value="RW">RW</option>
+                            </select>
+                        </div>
+                    </div>
 
-                        <!-- <label for="passing">Passing</label> -->
-                        <input type="number" id="passing" placeholder="PAS" class="form-control mb-1">
+                </div>
+                <div class="stats-container">
+                    <div class="stats-row">
+                        <div class="form-group">
+                            <label for="rating">Rating</label>
+                            <input type="number" id="rating" placeholder="NOT" class="form-contro">
+                        </div>
+                        <div class="form-group">
+                            <label for="pace">Pace</label>
+                            <input type="number" id="pace" placeholder="PAC" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="shooting">Shooting</label>
+                            <input type="number" id="shooting" placeholder="SHO" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="passing">Passing</label>
+                            <input type="number" id="passing" placeholder="PAS" class="form-control">
+                        </div>
                     </div>
                     <div class="stats-row">
-                        <!-- <label for="dribbling">Dribbling</label> -->
-                        <input type="number" id="dribbling" placeholder="DRI" class="form-control mb-1">
-
-                        <!-- <label for="defending">Defending</label> -->
-                        <input type="number" id="defending" placeholder="DEF" class="form-control mb-1">
-
-                        <!-- <label for="physical">Physical</label> -->
-                        <input type="number" id="physical" placeholder="PHY" class="form-control mb-1">
+                        <div class="form-group">
+                            <label for="dribbling">Dribbling</label>
+                            <input type="number" id="dribbling" placeholder="DRI" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="defending">Defending</label>
+                            <input type="number" id="defending" placeholder="DEF" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="physical">Physical</label>
+                            <input type="number" id="physical" placeholder="PHY" class="form-control mb-1">
+                        </div>
                     </div>
                 </div>
+
                 <div class="modal-footer p-0">
                     <button id="cancelButton" type="button" class="btn btn-secondary rounded-pill"
                         aria-label="Annuler joueur">Annuler</button>
