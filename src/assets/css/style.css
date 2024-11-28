@@ -262,4 +262,27 @@ main {
   }
 
 
+  .stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stats-row {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.stats-row label,
+.stats-row input {
+    flex: 1;
+    min-width: 20px;
+}
+
+.stats-row input {
+    margin-left: 5px;
+}
 
