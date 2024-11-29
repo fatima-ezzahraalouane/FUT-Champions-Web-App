@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .player-card {
+    position: relative;
+    width: 80px;
+    height: 120px;
+    background: url(../images/badge_gold.png) no-repeat center center;
+    background-size: cover;
+    padding: 10px;
+    text-align: center;
+    color: black;
+  }
+
+  .card-header {
+    position: absolute;
+    top: 30px;
+    left: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .rating {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  
+  .position {
+    font-size: 10px;
+    margin-top: 5px;
+  }
+  
+  .player-photo-container {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+  }
+  
+  .player-photo {
+    width: 100%;
+    height: auto;
+  }
+  
+  .player-name {
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: bold;
+  }
+  
+  .club-info {
+    position: absolute;
+    top: 32px;
+    left: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .flag {
+    width: 15px;
+    height: 13px;
+  }
+  
+  .club-logo {
+    width: 15px;
+    height: 15px;
+    margin-top: 5px;
+  }
+  
+  .stats {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    font-size: 5px;
+    /* font-weight: bold; */
+    /* text-align: center; */
+  }
+  

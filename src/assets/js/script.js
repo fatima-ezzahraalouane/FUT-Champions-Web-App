@@ -23,16 +23,21 @@ prevBtn.addEventListener('click', () => {
 
 
 // Sélectionne tous les boutons "+" et le modal
-const addPlayerButtons = document.querySelectorAll('.add-player-btn');
+const addplayer = document.getElementById('addplayer');
 const modal = document.getElementById('modal');
 const cancelButton = document.getElementById('cancelButton');
+const addButton = document.getElementById('addButton');
+
 
 // Fonction pour afficher le modal
-addPlayerButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        modal.style.display = 'flex'; // Affiche le modal
-    });
-});
+// addPlayerButtons.forEach((button) => {
+//     button.addEventListener('click', () => {
+//         modal.style.display = 'flex'; // Affiche le modal
+//     });
+// });
+addplayer.addEventListener('click', () => {
+    modal.style.display = 'flex';
+  });
 
 // Fonction pour fermer le modal
 cancelButton.addEventListener('click', () => {
