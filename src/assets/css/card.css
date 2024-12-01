@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -6,9 +6,9 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f4f4f4;
-  }
+  } */
   
-  .player-card {
+  .player-card-gold {
     position: relative;
     width: 80px;
     height: 120px;
@@ -19,32 +19,46 @@ body {
     color: black;
   }
 
+  .player-card-gold span {
+    position: absolute;
+    top: 100px;
+    left: 19px;
+    font-size: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-weight: bold;
+    padding: 1px 5px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
   .card-header {
     position: absolute;
-    top: 30px;
-    left: 13px;
+    top: 23px;
+    left: 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
   .rating {
-    font-size: 13px;
+    font-size: 10px;
     font-weight: bold;
   }
   
   .position {
     font-size: 10px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
   }
   
   .player-photo-container {
     position: absolute;
-    top: 14px;
+    top: 13px;
     left: 50%;
     transform: translateX(-50%);
-    width: 75px;
-    height: 75px;
+    width: 63px;
+    height: 63px;
     overflow: hidden;
   }
   
@@ -55,43 +69,71 @@ body {
   
   .player-name {
     position: absolute;
-    bottom: 38px;
+    bottom:33px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 11px;
+    font-size: 5px;
     font-weight: bold;
   }
   
   .club-info {
     position: absolute;
-    top: 32px;
-    left: 72px;
+    top: 27px;
+    left: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
   .flag {
-    width: 15px;
-    height: 13px;
+    width: 13px;
+    height: 10px;
   }
   
   .club-logo {
-    width: 15px;
-    height: 15px;
+    width: 13px;
+    height: 13px;
     margin-top: 5px;
   }
-  
-  .stats {
+
+  /* .stats {
     position: absolute;
-    top: 72%;
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    font-size: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3px;
+    font-size: 4px;
+    font-weight: bold;
+    text-align: center;
+  } */
+  
+  .stats {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 colonnes pour une ligne */
+    column-gap: 2px; /* Espacement entre les colonnes */
+    row-gap: 3px; /* Espacement entre les lignes (si nécessaire) */
+    font-size:10px; /* Ajustez selon la taille souhaitée */
     /* font-weight: bold; */
-    /* text-align: center; */
+    text-align: center;
+    color: red; /* Couleur dorée comme sur l'image */
+  }
+  
+  .stats .statsp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .stats .statsp div {
+    font-size: 5px; /* Taille des valeurs */
+    font-weight: bold;
+    color: black; /* Couleur blanche pour les chiffres */
   }
   
