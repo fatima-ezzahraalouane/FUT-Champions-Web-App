@@ -48,6 +48,11 @@ function isValidStat(value) {
     return regex.test(value.trim());
 }
 
+// Fonction pour vérifier si une URL se termine par .png
+function isValidPngUrl(value) {
+    const regex = /^https:\/\/.*\.(png)$/i; // Vérifie que l'URL commence par http(s):// et se termine par .png
+    return regex.test(value.trim());
+}
 
 // Références des champs et du menu déroulant
 const positionSelect = document.getElementById('positionJoueur');
@@ -187,18 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Validation des champs avec regex
-        if (!isValidAlphabetInput(playerName)) {
-            showPopup("Le champ 'Nom' doit contenir uniquement des lettres et des espaces.");
-            return;
-        }
-
-        if (!isValidAlphabetInput(playerNationality)) {
-            showPopup("Le champ 'Nationality' doit contenir uniquement des lettres et des espaces.");
-            return;
-        }
-
-        if (!isValidAlphabetInput(playerClub)) {
-            showPopup("Le champ 'Club' doit contenir uniquement des lettres et des espaces.");
+        if (!isValidAlphabetInput(playerName) || !isValidAlphabetInput(playerNationality) || !isValidAlphabetInput(playerClub)) {
+            showPopup("Le champ doit contenir uniquement des lettres et des espaces.");
             return;
         }
 
@@ -220,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Validation des champs obligatoires avec le pop-up
-        if (!playerName || !playerPhoto || !playerPosition || !playerNationality || !playerFlag || !playerClub || !playerLogo) {
-            showPopup("Veuillez remplir tous les champs avant de soumettre.");
+        // Valider les URL .png
+        if (!isValidPngUrl(playerPhoto) || !isValidPngUrl(playerLogo) || !isValidPngUrl(playerFlag)) {
+            showPopup("Le champ doit contenir une URL HTTPS valide se terminant par .png.");
             return;
         }
 
