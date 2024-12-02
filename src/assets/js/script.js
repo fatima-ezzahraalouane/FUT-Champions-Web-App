@@ -97,6 +97,24 @@ document.getElementById('autofill').addEventListener('click', () => {
             const nameInput = document.getElementById('nom').value.trim().toLowerCase();
             const player = data.players.find(p => p.name.toLowerCase() === nameInput);
 
+
+            // Références pour le pop-up
+            const popup = document.getElementById('popup');
+            const popupMessage = document.getElementById('popup-message');
+            const popupClose = document.getElementById('popup-close');
+
+            // Fonction pour afficher le pop-up
+            function showPopup(message) {
+                popupMessage.textContent = message;
+                popup.classList.remove('hidden'); // Affiche le pop-up
+            }
+
+            // Fonction pour fermer le pop-up
+            popupClose.addEventListener('click', () => {
+                popup.classList.add('hidden'); // Cache le pop-up
+            });
+
+
             if (player) {
                 document.getElementById('nationality').value = player.nationality || '';
                 document.getElementById('club').value = player.club || '';
@@ -118,9 +136,9 @@ document.getElementById('autofill').addEventListener('click', () => {
                 document.getElementById('reflexes').value = player.reflexes || '';
                 document.getElementById('speed').value = player.speed || '';
                 document.getElementById('positioning').value = player.positioning || '';
-                alert(`Les informations de ${player.name} ont été remplies.`);
+    showPopup(`Les informations de ${player.name} ont été remplies.`);
             } else {
-                alert("Aucun joueur trouvé avec ce nom.");
+                showPopup("Aucun joueur trouvé avec ce nom.");
             }
         })
         .catch(error => {
@@ -157,12 +175,30 @@ document.getElementById('addButton').addEventListener('click', () => {
     // const speed = document.getElementById('speed').value.trim();
     // const positioning = document.getElementById('positioning').value.trim();
 
+    // Références pour le pop-up
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popup-message');
+    const popupClose = document.getElementById('popup-close');
 
-    // Validation des champs obligatoires
+    // Fonction pour afficher le pop-up
+    function showPopup(message) {
+        popupMessage.textContent = message;
+        popup.classList.remove('hidden'); // Affiche le pop-up
+    }
+
+    // Fonction pour fermer le pop-up
+    popupClose.addEventListener('click', () => {
+        popup.classList.add('hidden'); // Cache le pop-up
+    });
+
+    // Validation des champs obligatoires avec le pop-up
     if (!playerName || !playerPhoto || !playerPosition || !playerRating || !playerNationality || !playerFlag || !playerClub || !playerLogo) {
-        alert("Veuillez remplir tous les champs avant de soumettre.");
+        showPopup("Veuillez remplir tous les champs avant de soumettre.");
         return;
     }
+
+
+
 
     // Trouver la position correspondante sur le terrain
     const positionCard = document.querySelector(`.player-card[data-position="${playerPosition}"]`);
@@ -220,9 +256,9 @@ document.getElementById('addButton').addEventListener('click', () => {
 
         `;
 
-//<div class="player-card-gold span">
-           //    <span>${playerPosition}</span>
-          //  </div>
+        //<div class="player-card-gold span">
+        //    <span>${playerPosition}</span>
+        //  </div>
 
 
         //   <div class="stats">

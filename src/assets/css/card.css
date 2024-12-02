@@ -1,14 +1,4 @@
-/* body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
-  } */
-  
-  .player-card-gold {
+.player-card-gold {
     position: relative;
     width: 80px;
     height: 120px;
@@ -67,14 +57,33 @@
     height: auto;
   }
   
-  .player-name {
+  /* .player-name {
     position: absolute;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    bottom:34px;
     bottom:33px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5px;
     font-weight: bold;
-  }
+  } */
+
+  .player-name {
+    position: absolute;
+    display: flex;
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+    bottom: 34px; /* Ajuste la distance par rapport au bas du conteneur parent */
+    left: 50%; /* Place horizontalement au centre du parent */
+    transform: translateX(-50%); /* Ajuste l'alignement exact pour le centrage horizontal */
+    font-size: 5px; /* Taille légèrement agrandie pour une meilleure lisibilité */
+    font-weight: bold;
+    text-align: center; /* Assure l'alignement du texte s'il y a plusieurs lignes */
+    white-space: nowrap; /* Empêche le texte de se briser sur plusieurs lignes */
+}
+
   
   .club-info {
     position: absolute;
@@ -133,7 +142,7 @@
   
   .stats .statsp div {
     font-size: 5px; /* Taille des valeurs */
-    font-weight: bold;
+    /* font-weight: bold; */
     color: black; /* Couleur blanche pour les chiffres */
   }
   
