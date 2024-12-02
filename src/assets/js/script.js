@@ -42,6 +42,12 @@ function isValidAlphabetInput(value) {
     return regex.test(value.trim());
 }
 
+// Fonction pour valider un nombre entre 0 et 100
+function isValidStat(value) {
+    const regex = /^(100|[0-9]{1,2})$/; // Accepte 0-100
+    return regex.test(value.trim());
+}
+
 //modal
 const addplayer = document.getElementById('addplayer');
 const modal = document.getElementById('modal');
@@ -183,6 +189,36 @@ document.getElementById('addButton').addEventListener('click', () => {
 
     if (!isValidAlphabetInput(playerClub)) {
         showPopup("Le champ 'Club' doit contenir uniquement des lettres et des espaces.");
+        return;
+    }
+
+    // Valider chaque statistique
+    if (!isValidStat(playerRating)) {
+        showPopup("Le champ 'Rating' doit contenir un nombre entre 0 et 100.");
+        return;
+    }
+    if (!isValidStat(pace)) {
+        showPopup("Le champ 'Pace' doit contenir un nombre entre 0 et 100.");
+        return;
+    }
+    if (!isValidStat(shooting)) {
+        showPopup("Le champ 'Shooting' doit contenir un nombre entre 0 et 100.");
+        return;
+    }
+    if (!isValidStat(passing)) {
+        showPopup("Le champ 'Passing' doit contenir un nombre entre 0 et 100.");
+        return;
+    }
+    if (!isValidStat(dribbling)) {
+        showPopup("Le champ 'Dribbling' doit contenir un nombre entre 0 et 100.");
+        return;
+    }
+    if (!isValidStat(defending)) {
+        showPopup("Le champ 'Defending' doit contenir un nombre entre 0 et 100.");
+        return;
+    }
+    if (!isValidStat(physical)) {
+        showPopup("Le champ 'Physical' doit contenir un nombre entre 0 et 100.");
         return;
     }
 
