@@ -28,12 +28,12 @@ const popupClose = document.getElementById('popup-close');
 // Fonction pour afficher le pop-up
 function showPopup(message) {
     popupMessage.textContent = message;
-    popup.classList.remove('hidden'); // Affiche le pop-up
+    popup.classList.remove('hidden'); 
 }
 
 // Fonction pour fermer le pop-up
 popupClose.addEventListener('click', () => {
-    popup.classList.add('hidden'); // Cache le pop-up
+    popup.classList.add('hidden');
 });
 
 // Fonction pour valider les champs avec regex
@@ -44,18 +44,18 @@ function isValidAlphabetInput(value) {
 
 // Fonction pour valider un nombre entre 0 et 100
 function isValidStat(value) {
-    const regex = /^(100|[0-9]{1,2})$/; // Accepte 0-100
+    const regex = /^(100|[0-9]{1,2})$/;
     return regex.test(value.trim());
 }
 
 // Fonction pour vérifier si une URL se termine par .png
 function isValidPngUrl(value) {
-    const regex = /^https:\/\/.*\.(png)$/i; // Vérifie que l'URL commence par http(s):// et se termine par .png
+    const regex = /^https:\/\/.*\.(png)$/i;
     return regex.test(value.trim());
 }
 
 function isLockedPosition(newPosition) {
-    const regex = new RegExp(`^${lockedPosition}$`, 'i'); // Vérifie si la nouvelle position correspond à la position verrouillée
+    const regex = new RegExp(`^${lockedPosition}$`, 'i');
     return regex.test(newPosition);
 }
 
@@ -160,12 +160,11 @@ positionSelect.addEventListener('change', () => {
     const newPosition = positionSelect.value;
     if (lockedPosition && !isLockedPosition(newPosition)) {
         showPopup(`Impossible de changer la position. Cette position est verrouillée à "${lockedPosition}".`);
-        positionSelect.value = lockedPosition; // Réinitialise à la position verrouillée
+        positionSelect.value = lockedPosition;
     } else {
         updateLabelsForPosition(newPosition);
     }
 });
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const addplayer = document.getElementById('addplayer');
@@ -180,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fonction pour fermer le modal
     cancelButton.addEventListener('click', () => {
-        modal.style.display = 'none'; // Cache le modal
+        modal.style.display = 'none'; 
     });
 
     // Fermer le modal en cliquant en dehors de la boîte
@@ -192,7 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ajouter un joueur sur le terrain
     addButton.addEventListener('click', (event) => {
-        event.preventDefault(); // Empêche le comportement par défaut
+        event.preventDefault(); 
+
         // Récupérer les données du formulaire
         const playerName = document.getElementById('nom').value.trim();
         const playerPhoto = document.getElementById('photo').value.trim();
@@ -315,11 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
             substitutesWrapper.appendChild(substituteCard);
             showPopup(`Le joueur ${playerName} a été ajouté en tant que remplaçant.`);
         } else {
-
-
-
-
-
             // Trouver la position correspondante sur le terrain
             const positionCard = document.querySelector(`.player-card[data-position="${playerPosition}"]`);
 
