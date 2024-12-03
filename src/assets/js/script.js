@@ -54,6 +54,11 @@ function isValidPngUrl(value) {
     return regex.test(value.trim());
 }
 
+function isLockedPosition(newPosition) {
+    const regex = new RegExp(`^${lockedPosition}$`, 'i'); // Vérifie si la nouvelle position correspond à la position verrouillée
+    return regex.test(newPosition);
+}
+
 // Références des champs et du menu déroulant
 const positionSelect = document.getElementById('positionJoueur');
 const paceLabel = document.querySelector('label[for="pace"]');
@@ -141,9 +146,19 @@ document.getElementById('autofill').addEventListener('click', () => {
         });
 });
 
+// positionSelect.addEventListener('change', () => {
+//     const newPosition = positionSelect.value;
+//     if (lockedPosition && newPosition !== lockedPosition) {
+//         showPopup(`Impossible de changer la position. Cette position est verrouillée à "${lockedPosition}".`);
+//         positionSelect.value = lockedPosition; // Réinitialise à la position verrouillée
+//     } else {
+//         updateLabelsForPosition(newPosition);
+//     }
+// });
+
 positionSelect.addEventListener('change', () => {
     const newPosition = positionSelect.value;
-    if (lockedPosition && newPosition !== lockedPosition) {
+    if (lockedPosition && !isLockedPosition(newPosition)) {
         showPopup(`Impossible de changer la position. Cette position est verrouillée à "${lockedPosition}".`);
         positionSelect.value = lockedPosition; // Réinitialise à la position verrouillée
     } else {
@@ -151,11 +166,13 @@ positionSelect.addEventListener('change', () => {
     }
 });
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const addplayer = document.getElementById('addplayer');
     const modal = document.getElementById('modal');
     const cancelButton = document.getElementById('cancelButton');
     const addButton = document.getElementById('addButton');
+    const substitutesWrapper = document.querySelector('.carousel-wrapper');
 
     addplayer.addEventListener('click', () => {
         modal.style.display = 'flex';
@@ -239,17 +256,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Trouver la position correspondante sur le terrain
-        const positionCard = document.querySelector(`.player-card[data-position="${playerPosition}"]`);
+        const fieldPlayers = document.querySelectorAll('.player-card:not(.substitute) .player-photo');
 
-        if (positionCard) {
-            //Ajouter la carte gold
-            positionCard.classList.add("player-card-gold");
-
-            // Remplacer le contenu de la position avec la carte du joueur
+        if (fieldPlayers.length >= 11) {
+            // Ajouter le joueur dans la section "Substitutes"
+            const substituteCard = document.createElement('div');
+            substituteCard.classList.add('player-card-gold', 'substitute');
             if (playerPosition === 'GK') {
                 // Carte pour gardien
-                positionCard.innerHTML = `
+                substituteCard.innerHTML = `
                     <div class="card-header">
                         <div class="rating">${playerRating}</div>
                         <div class="position">${playerPosition}</div>
@@ -273,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             } else {
                 // Carte pour autres positions
-                positionCard.innerHTML = `
+                substituteCard.innerHTML = `
                     <div class="card-header">
                         <div class="rating">${playerRating}</div>
                         <div class="position">${playerPosition}</div>
@@ -297,13 +312,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
 
-            showPopup(`Le joueur ${playerName} a été ajouté à la position ${playerPosition}.`);
-            document.getElementById('modal').style.display = 'none'; // Fermer le modal
-
-            // Réinitialiser les champs du formulaire
-            document.querySelector('form').reset();
+            substitutesWrapper.appendChild(substituteCard);
+            showPopup(`Le joueur ${playerName} a été ajouté en tant que remplaçant.`);
         } else {
-            showPopup("Position introuvable sur le terrain.");
+
+
+
+
+
+            // Trouver la position correspondante sur le terrain
+            const positionCard = document.querySelector(`.player-card[data-position="${playerPosition}"]`);
+
+            if (positionCard) {
+                //Ajouter la carte gold
+                positionCard.classList.add("player-card-gold");
+
+                // Remplacer le contenu de la position avec la carte du joueur
+                if (playerPosition === 'GK') {
+                    // Carte pour gardien
+                    positionCard.innerHTML = `
+                    <div class="card-header">
+                        <div class="rating">${playerRating}</div>
+                        <div class="position">${playerPosition}</div>
+                    </div>
+                    <div class="player-photo-container">
+                        <img src="${playerPhoto}" alt="Photo de ${playerName}" class="player-photo">
+                    </div>
+                    <div class="player-name">${playerName}</div>
+                    <div class="club-info">
+                        <img src="${playerFlag}" alt="Drapeau ${playerNationality}" class="flag">
+                        <img src="${playerLogo}" alt="Logo du club ${playerClub}" class="club-logo">
+                    </div>
+                    <div class="stats">
+                        <div class="statsp"><div>DIV</div><div>${diving}</div></div>
+                        <div class="statsp"><div>HAN</div><div>${handling}</div></div>
+                        <div class="statsp"><div>KIC</div><div>${kicking}</div></div>
+                        <div class="statsp"><div>REF</div><div>${reflexes}</div></div>
+                        <div class="statsp"><div>SPD</div><div>${speed}</div></div>
+                        <div class="statsp"><div>POS</div><div>${positioning}</div></div>
+                    </div>
+                `;
+                } else {
+                    // Carte pour autres positions
+                    positionCard.innerHTML = `
+                    <div class="card-header">
+                        <div class="rating">${playerRating}</div>
+                        <div class="position">${playerPosition}</div>
+                    </div>
+                    <div class="player-photo-container">
+                        <img src="${playerPhoto}" alt="Photo de ${playerName}" class="player-photo">
+                    </div>
+                    <div class="player-name">${playerName}</div>
+                    <div class="club-info">
+                        <img src="${playerFlag}" alt="Drapeau ${playerNationality}" class="flag">
+                        <img src="${playerLogo}" alt="Logo du club ${playerClub}" class="club-logo">
+                    </div>
+                    <div class="stats">
+                        <div class="statsp"><div>PAC</div><div>${pace}</div></div>
+                        <div class="statsp"><div>SHO</div><div>${shooting}</div></div>
+                        <div class="statsp"><div>PAS</div><div>${passing}</div></div>
+                        <div class="statsp"><div>DRI</div><div>${dribbling}</div></div>
+                        <div class="statsp"><div>DEF</div><div>${defending}</div></div>
+                        <div class="statsp"><div>PHY</div><div>${physical}</div></div>
+                    </div>
+                `;
+                }
+
+                showPopup(`Le joueur ${playerName} a été ajouté à la position ${playerPosition}.`);
+                document.getElementById('modal').style.display = 'none'; // Fermer le modal
+
+                // Réinitialiser les champs du formulaire
+                document.querySelector('form').reset();
+            } else {
+                showPopup("Position introuvable sur le terrain.");
+            }
         }
+        document.querySelector('form').reset();
+        modal.style.display = 'none';
     });
 });
