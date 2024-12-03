@@ -63,12 +63,9 @@ const dribblingLabel = document.querySelector('label[for="dribbling"]');
 const defendingLabel = document.querySelector('label[for="defending"]');
 const physicalLabel = document.querySelector('label[for="physical"]');
 
-// Écouteur pour détecter les changements dans le menu déroulant
-positionSelect.addEventListener('change', () => {
-    const position = positionSelect.value;
-
+// Fonction pour mettre à jour les labels
+function updateLabelsForPosition(position) {
     if (position === 'GK') {
-        // Modifier les labels pour le gardien
         paceLabel.textContent = 'Diving';
         shootingLabel.textContent = 'Handling';
         passingLabel.textContent = 'Kicking';
@@ -76,7 +73,6 @@ positionSelect.addEventListener('change', () => {
         defendingLabel.textContent = 'Speed';
         physicalLabel.textContent = 'Positioning';
     } else {
-        // Réinitialiser les labels pour les autres positions
         paceLabel.textContent = 'Pace';
         shootingLabel.textContent = 'Shooting';
         passingLabel.textContent = 'Passing';
@@ -84,8 +80,15 @@ positionSelect.addEventListener('change', () => {
         defendingLabel.textContent = 'Defending';
         physicalLabel.textContent = 'Physical';
     }
+}
+
+// Écouteur pour détecter les changements dans le menu déroulant
+positionSelect.addEventListener('change', () => {
+    const position = positionSelect.value;
+    updateLabelsForPosition(position);
 });
 
+let lockedPosition = null;
 
 // Charger le fichier JSON et chercher le joueur
 document.getElementById('autofill').addEventListener('click', () => {
@@ -105,14 +108,16 @@ document.getElementById('autofill').addEventListener('click', () => {
                 document.getElementById('positionJoueur').value = player.position || '';
                 document.getElementById('rating').value = player.rating || '';
 
+                updateLabelsForPosition(player.position);
+
                 // Vérifier si le joueur est un gardien (GK)
                 if (player.position === 'GK') {
-                    document.getElementById('diving').value = player.diving || ''; // Diving
-                    document.getElementById('handling').value = player.handling || ''; // Handling
-                    document.getElementById('kicking').value = player.kicking || ''; // Kicking
-                    document.getElementById('reflexes').value = player.reflexes || ''; // Reflexes
-                    document.getElementById('speed').value = player.speed || ''; // Speed
-                    document.getElementById('positioning').value = player.positioning || ''; // Positioning
+                    document.getElementById('pace').value = player.diving || ''; // Diving
+                    document.getElementById('shooting').value = player.handling || ''; // Handling
+                    document.getElementById('passing').value = player.kicking || ''; // Kicking
+                    document.getElementById('dribbling').value = player.reflexes || ''; // Reflexes
+                    document.getElementById('defending').value = player.speed || ''; // Speed
+                    document.getElementById('physical').value = player.positioning || ''; // Positioning
                 } else {
                     // Si ce n'est pas un GK, utiliser les statistiques standards
                     document.getElementById('pace').value = player.pace || '';
@@ -123,6 +128,8 @@ document.getElementById('autofill').addEventListener('click', () => {
                     document.getElementById('physical').value = player.physical || '';
                 }
 
+                lockedPosition = player.position;
+
                 showPopup(`Les informations de ${player.name} ont été remplies.`);
             } else {
                 showPopup("Aucun joueur trouvé avec ce nom.");
@@ -132,6 +139,16 @@ document.getElementById('autofill').addEventListener('click', () => {
             console.error("Erreur lors du chargement du fichier JSON : ", error);
             showPopup("Une erreur s'est produite.");
         });
+});
+
+positionSelect.addEventListener('change', () => {
+    const newPosition = positionSelect.value;
+    if (lockedPosition && newPosition !== lockedPosition) {
+        showPopup(`Impossible de changer la position. Cette position est verrouillée à "${lockedPosition}".`);
+        positionSelect.value = lockedPosition; // Réinitialise à la position verrouillée
+    } else {
+        updateLabelsForPosition(newPosition);
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -159,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ajouter un joueur sur le terrain
     addButton.addEventListener('click', (event) => {
         event.preventDefault(); // Empêche le comportement par défaut
-        console.log("Bouton cliqué !");
         // Récupérer les données du formulaire
         const playerName = document.getElementById('nom').value.trim();
         const playerPhoto = document.getElementById('photo').value.trim();
@@ -169,6 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const playerFlag = document.getElementById('flag').value.trim();
         const playerClub = document.getElementById('club').value.trim();
         const playerLogo = document.getElementById('logoJoueur').value.trim();
+
+        updateLabelsForPosition(playerPosition);
 
         let diving, handling, kicking, reflexes, speed, positioning;
         let pace, shooting, passing, dribbling, defending, physical;
